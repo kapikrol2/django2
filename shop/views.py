@@ -38,3 +38,13 @@ def book_detail(request, book_id):
     return render(request, "shop/book_detail.html", {"book": book})
 
 
+def book_add(request):
+    if request.method == "POST":
+        form = BookForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            BOOKS.append({"id": len(BOOKS) + 1, "author": "Autor nieznany", **data})
+            return redirect("shop:book_list")
+    else:
+        form = BookForm()
+    return render(request, "shop/book_form.html", {"form": form})
