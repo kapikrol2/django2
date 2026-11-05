@@ -37,3 +37,9 @@ class BookForm(forms.Form):
         initial=True,
     )
 
+    def clean_title(self):
+        title = self.cleaned_data["title"].strip()
+        if title.lower() in ["test", "brudnopis", "aaa"]:
+            raise forms.ValidationError("Wprowadź prawdziwy tytuł, nie testowy.")
+        return title
+
