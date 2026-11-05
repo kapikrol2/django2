@@ -50,3 +50,10 @@ th {
     padding: 0.4rem;
 }
 
+footer {
+    margin-top: 3rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+    color: #777;
+    font-size: 0.9rem;
+}
