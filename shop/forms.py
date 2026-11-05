@@ -54,3 +54,6 @@ class BookForm(forms.Form):
         return cleaned_data
 
 
+class SearchForm(forms.Form):
+    q = forms.CharField(label="Szukaj", required=False, max_length=50)
+    in_stock_only = forms.BooleanField(label="Tylko dostępne", required=False)
