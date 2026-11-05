@@ -28,3 +28,6 @@ td, th {
     text-align: left;
 }
 
+th {
+    background-color: #f4f4f4;
+}
