@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Księgarnia 4TP{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'shop:index' %}">Start</a> |
+        <a href="{% url 'shop:book_list' %}">Książki</a> |
+        <a href="{% url 'shop:book_add' %}">Dodaj książkę</a>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        &copy; {% now "Y" %} Księgarnia 4TP
+    </footer>
+</body>
+</html>
