@@ -15,3 +15,19 @@ def index(request):
     return render(request, "shop/index.html")
 
 
+def book_list(request):
+    form = SearchForm(request.GET)
+    books = BOOKS
+
+    if form.is_valid():
+        q = form.cleaned_data.get("q")
+        in_stock_only = form.cleaned_data.get("in_stock_only")
+
+        if q:
+            books = [b for b in books if q.lower() in b["title"].lower() or q.lower() in b["author"].lower()]
+        if in_stock_only:
+            books = [b for b in books if b["in_stock"]]
+
+    return render(request, "shop/book_list.html", {"books": books, "form": form})
+
+
