@@ -3,3 +3,33 @@
 {% block title %}Katalog Książek – Księgarnia 4TP{% endblock %}
 
 {% block content %}
+<h1>Książki ({{ books|length }})</h1>
+
+<form method="get" style="margin-bottom: 1.5rem;">
+    {{ form.as_p }}
+    <button type="submit">Szukaj</button>
+</form>
+
+{% if books %}
+<table>
+    <thead>
+        <tr>
+            <th>Lp.</th>
+            <th>Tytuł</th>
+            <th>Autor</th>
+            <th>Cena</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for b in books %}
+        <tr {% if not b.in_stock %}class="unavailable"{% endif %}>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'shop:book_detail' b.id %}">{{ b.title }}</a></td>
+            <td>{{ b.author }}</td>
+            <td>{{ b.price }} zł</td>
+            <td>{{ b.in_stock|yesno:"Dostępna,Brak" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
