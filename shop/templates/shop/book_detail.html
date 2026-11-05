@@ -2,3 +2,11 @@
 
 {% block title %}{{ book.title }} – Szczegóły{% endblock %}
 
+{% block content %}
+<h1>{{ book.title }}</h1>
+<p><strong>Autor:</strong> {{ book.author }}</p>
+<p><strong>Cena:</strong> {{ book.price }} zł</p>
+<p><strong>Status w magazynie:</strong> {{ book.in_stock|yesno:"Dostępna,Niedostępna" }}</p>
+
+<p><a href="{% url 'shop:book_list' %}">&larr; Powrót do listy</a></p>
+{% endblock %}
