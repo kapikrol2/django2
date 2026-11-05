@@ -44,3 +44,9 @@ th {
     font-size: 0.9rem;
 }
 
+.wide-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.4rem;
+}
+
