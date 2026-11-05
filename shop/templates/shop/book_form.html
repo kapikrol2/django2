@@ -3,3 +3,23 @@
 {% block title %}DodajNową Książkę – Księgarnia 4TP{% endblock %}
 
 {% block content %}
+<h1>Dodaj nową książkę</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    <!-- Przykład ręcznie wyrenderowanego pola 'title' z widgetem z forms.py -->
+    <p>
+        {{ form.title.label_tag }}<br>
+        {{ form.title }}
+        {{ form.title.errors }}
+    </p>
+
+    <!-- Reszta pól wyrenderowana automatycznie w paragrafach -->
+    {{ form.price.as_field_group }}
+    {{ form.discount_price.as_field_group }}
+    {{ form.genre.as_field_group }}
+    {{ form.in_stock.as_field_group }}
+
+    <button type="submit">Zapisz książkę</button>
+</form>
