@@ -43,3 +43,14 @@ class BookForm(forms.Form):
             raise forms.ValidationError("Wprowadź prawdziwy tytuł, nie testowy.")
         return title
 
+    def clean(self):
+        cleaned_data = super().clean()
+        price = cleaned_data.get("price")
+        discount_price = cleaned_data.get("discount_price")
+
+        if price and discount_price and discount_price >= price:
+            self.add_error("discount_price", "Cena promocyjna musi być niższa od regularnej.")
+
+        return cleaned_data
+
+
