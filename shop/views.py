@@ -31,3 +31,10 @@ def book_list(request):
     return render(request, "shop/book_list.html", {"books": books, "form": form})
 
 
+def book_detail(request, book_id):
+    book = next((b for b in BOOKS if b["id"] == book_id), None)
+    if book is None:
+        raise Http404("Nie znaleziono książki")
+    return render(request, "shop/book_detail.html", {"book": book})
+
+
