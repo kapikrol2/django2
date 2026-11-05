@@ -36,3 +36,11 @@ th {
     background-color: #ffe6e6;
 }
 
+.errorlist {
+    color: #c0392b;
+    list-style: none;
+    padding: 0;
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+}
+
